@@ -1,6 +1,9 @@
 ﻿{
     "name": "mean-stack-registration-login-example",
     "description": "MEAN Stack User Registration and Login Example Application",
+    "scripts": {
+      "start": "nodemon bin/www"
+    },
     "dependencies": {
         "express": "^4.13.0",
         "body-parser": "^1.13.2",

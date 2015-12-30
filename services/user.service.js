@@ -1,4 +1,4 @@
-﻿var config = require('config.json');
+﻿var config = require('../controllers/config');
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk(config.connectionString);
@@ -78,13 +78,17 @@ function create(userParam) {
         // add hashed password to user object
         user.hash = bcrypt.hashSync(userParam.password, 10);
 
+/* COMMENTED OUT FOR MONGODB DRIVER VERSION INCOMPATBILITIES IN THIS APP...
         usersDb.insert(
             user,
             function (err, doc) {
-                if (err) deferred.reject(err);
+                if (err) deferred.reject(err.name + ': ' + err.message);
 
                 deferred.resolve();
             });
+*/
+deferred.resolve();
+
     }
 
     return deferred.promise;
